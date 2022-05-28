@@ -28,7 +28,7 @@
 
 body {
     background-color: var(--light-color);
-    font-family: barlow, sans-serif;
+    font-family: 'Barlow', sans-serif;
     color: var(--dark-color);
 }
 
