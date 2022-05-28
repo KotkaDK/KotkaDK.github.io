@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <title>COLOR PALETTE TESTER | 1.0.0</title>
+        <script>
+
+            function setDefaultText() {
+                document.getElementById('light').value = '#EFF0F3';
+                document.getElementById('main').value = '#FF8E3C';
+                document.getElementById('dark').value = '#272343';
+                document.getElementById('text-to-preview').value = '';
+            }
+
+            function changeColor(version) {
+
+                color = document.getElementById(version).value;
+
+                // check if color is a valid hex code
+                if (!color.match(/^#[0-9A-F]{6}$/i)) {
+                    color = "#FFFFFF";
+                }
+
+                document.getElementById(version).value = color.toUpperCase();
+                
+                switch (version) {
+                    case "light":
+                        document.documentElement.style.setProperty('--light-color', color);
+                        break;
+                    case "main":
+                        document.documentElement.style.setProperty('--main-color', color);
+                        break;
+                    case "dark":
+                        document.documentElement.style.setProperty('--dark-color', color);
+                        break;
+                }
+            }
+
+            function setTextPreview() {
+
+                if (document.getElementById("text-to-preview").value == "" || document.getElementById("text-to-preview").value == null) {
+                    text = "This is a preview of the colored text";
+                } else {
+                    text = document.getElementById("text-to-preview").value;
+                }
+
+                document.getElementsByClassName("light-text").item(0).innerHTML = text;
+                document.getElementsByClassName("light-text").item(1).innerHTML = text;
+
+                document.getElementsByClassName("main-text").item(0).innerHTML = text;
+                document.getElementsByClassName("main-text").item(1).innerHTML = text;
+
+                document.getElementsByClassName("dark-text").item(0).innerHTML = text;
+                document.getElementsByClassName("dark-text").item(1).innerHTML = text;
+
+            }
+        
+        </script>
+
+    </head>
+    <body onload="setDefaultText()">
+        
+        <h1>COLOR PALETTE TESTER</h1>
+
+        <fieldset>
+            <legend style="font-weight: bold;">COLORS</legend>
+            <p>This section is to select and view the colors you want to test!</p>
+            <hr>
+            <div id="color-selectors">
+                <div>
+                    <div class="preview" id="light-preview"></div>
+                    <input onchange="changeColor('light')" type="text" id="light" name="light" value="#EFF0F3">
+                    <label for="light"><span>Light color</span></label>
+                </div>
+                <br>
+        
+                <div>
+                    <div class="preview" id="main-preview"></div>
+                    <input onchange="changeColor('main')" type="text" id="main" name="main" value="#FF8E3C">
+                    <label for="main"><span>Main color</span></label>
+                </div>
+                <br>
+        
+                <div>
+                    <div class="preview" id="dark-preview"></div>
+                    <input onchange="changeColor('dark')" type="text" id="dark" name="dark" value="#272343">
+                    <label for="dark"><span>Dark color</span></label>
+                </div>
+            </div>
+        </fieldset>
+        
+        <br>
+
+        <fieldset>
+            <legend style="font-weight: bold;">BUTTON PREVIEW</legend>
+            <p>This section shows how the colors would look on each button design</p>
+            <hr>
+            <div id="button-previews">
+                <button class="tertiary-button">Tertiary</button>
+                <button class="secondary-button">Secondary</button>
+                <button class="main-button">Primary</button>
+
+                <button class="tertiary-button-dark">Tertiary</button>
+                <button class="secondary-button-dark">Secondary</button>
+                <button class="main-button-dark">Primary</button>
+            </div>
+        </fieldset>
+
+        <br>
+
+        <fieldset>
+            <legend style="font-weight: bold;">TEXT PREVIEW</legend>
+            <p>This section shows how the colors would look on each other</p>
+            <hr>
+            <p>Write some text to test in the previews!</p>
+            <textarea spellcheck="false" id="text-to-preview" placeholder="Write some text..." cols="104" rows="10" wrap="hard" maxlength="1040"></textarea>
+            <br>
+            <br>
+            <button class="main-button" onclick="setTextPreview()">Preview</button>
+            <hr>
+            <div id="text-previews">
+                <div id="light-text-preview">
+                    <p class="dark-text">This is a preview of the colored text</p>
+                    <p class="main-text">This is a preview of the colored text</p>
+                </div>
+                <br>
+        
+                <div id="main-text-preview">
+                    <p class="dark-text">This is a preview of the colored text</p>
+                    <p class="light-text">This is a preview of the colored text</p>
+                </div>
+                <br>
+        
+                <div id="dark-text-preview">
+                    <p class="main-text">This is a preview of the colored text</p>
+                    <p class="light-text">This is a preview of the colored text</p>
+                </div>
+            </div>
+        </fieldset>
+
+        <br>
+
+        <fieldset>
+            <legend style="font-weight: bold;">INFORMATION</legend>
+            <p>Version: 1.0.0</p>
+            <p>Since: 28th of May 2022</p>
+        </fieldset>
+
+    </body>
+</html> 

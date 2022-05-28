@@ -1,0 +1,196 @@
+:root {
+
+    /* -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
+
+    /* Commonly used for non-text elements, though not limited */
+
+    --main-color: #FF8E3C;
+
+    /* -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
+
+    /* Commonly used for text elements and backgrounds, though not limited */
+
+    --dark-color: #272343;
+    --light-color: #EFF0F3;
+
+    /* -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
+
+    /* BRIGHTNESS SETTINGS */
+
+    --hover: 110%;
+    --active: 105%;
+
+   /* -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
+
+}
+
+/* -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
+
+body {
+    background-color: var(--light-color);
+    font-family: barlow, sans-serif;
+    color: var(--dark-color);
+}
+
+button {
+    width: 88px;
+    height: 32px;
+
+    border: solid 1px;
+    margin-right: 40px;
+}
+
+button:hover {
+    filter: brightness(var(--hover));
+}
+
+button:active {
+    filter: brightness(var(--active));
+}
+
+input {
+    width: 88px;
+    height: 32px;
+
+    border: solid 1px;
+    margin-right: 6px;
+}
+
+hr {
+    border: dashed 1px;
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+/* -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
+
+.preview {
+    float: left;
+    margin-right: 10px;
+
+    width: 34px;
+    height: 34px;
+
+    border: solid 1px;
+    border-color: var(--dark-color);
+}
+
+#light-preview {
+    background-color: var(--light-color);
+}
+
+#main-preview {
+    background-color: var(--main-color);
+}
+
+#dark-preview {
+    background-color: var(--dark-color);
+}
+
+/* -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
+
+#text-to-preview {
+    min-width: 741px;
+    width: 741px;
+    max-width: 741px;
+
+    min-height: 200px;
+    max-height: 200px;
+
+    resize: none;
+
+    border-radius: 0;
+    border: solid black 1px;
+}
+
+#light-text-preview {
+    padding-top: 5px;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-bottom: 5px;
+
+    min-width: 300px;
+    max-width: 696px;
+
+    background-color: var(--light-color);
+}
+
+#main-text-preview {
+    padding-top: 5px;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-bottom: 5px;
+
+    min-width: 300px;
+    max-width: 696px;
+
+    background-color: var(--main-color);
+}
+
+#dark-text-preview {
+    padding-top: 5px;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-bottom: 5px;
+
+    min-width: 300px;
+    max-width: 696px;
+
+    background-color: var(--dark-color);
+}
+
+/* -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
+
+.main-button {
+    background-color: var(--main-color);
+    border-color: var(--main-color);
+    color: var(--light-color);
+}
+
+.secondary-button {
+    background-color: var(--light-color);
+    border-color: var(--main-color);
+    color: var(--main-color);
+}
+
+.tertiary-button {
+    background-color: var(--light-color);
+    border-color: var(--light-color);
+    color: var(--main-color);
+    text-decoration: underline;
+}
+
+.main-button-dark {
+    background-color: var(--dark-color);
+    border-color: var(--dark-color);
+    color: var(--light-color);
+}
+
+.secondary-button-dark {
+    background-color: var(--light-color);
+    border-color: var(--dark-color);
+    color: var(--dark-color);
+}
+
+.tertiary-button-dark {
+    background-color: var(--light-color);
+    border-color: var(--light-color);
+    color: var(--dark-color);
+    text-decoration: underline;
+}
+
+/* -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
+
+.light-text {
+    color: var(--light-color);
+}
+
+.main-text {
+    color: var(--main-color);
+}
+
+.dark-text {
+    color: var(--dark-color);
+}
+
+/* -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
