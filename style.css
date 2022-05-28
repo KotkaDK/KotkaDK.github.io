@@ -56,11 +56,6 @@ input {
     margin-right: 6px;
 }
 
-textarea:focus {
-    outline: none !important;
-    border-color: var(--main-color);
-}
-
 hr {
     border: dashed 1px;
     margin-top: 25px;
@@ -106,6 +101,11 @@ hr {
 
     border-radius: 0;
     border: solid black 1px;
+}
+
+#text-to-preview:focus {
+    border-color: var(--main-color);
+    outline: none;
 }
 
 #light-text-preview {
