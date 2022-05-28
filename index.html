@@ -7,15 +7,22 @@
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Barlow&display=swap" rel="stylesheet"> 
-        <title>COLOR PALETTE TESTER | 1.0.0</title>
+        <link href="https://fonts.googleapis.com/css2?family=Barlow&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+        <title>COLOR PALETTE TESTER | 1.1.2</title>
         <script>
 
             function setDefaultText() {
+
+                var style = getComputedStyle(document.body)
+
                 document.getElementById('light').value = '#EFF0F3';
-                document.getElementById('main').value = '#FF8E3C';
+                document.getElementById('primary').value = '#FF8E3C';
+                document.getElementById('secondary').value = '#D9376E';
                 document.getElementById('dark').value = '#272343';
                 document.getElementById('text-to-preview').value = '';
+                document.getElementById('icon-input').value = '';
+
             }
 
             function changeColor(version) {
@@ -33,8 +40,11 @@
                     case "light":
                         document.documentElement.style.setProperty('--light-color', color);
                         break;
-                    case "main":
-                        document.documentElement.style.setProperty('--main-color', color);
+                    case "primary":
+                        document.documentElement.style.setProperty('--primary-color', color);
+                        break;
+                    case "secondary":
+                        document.documentElement.style.setProperty('--secondary-color', color);
                         break;
                     case "dark":
                         document.documentElement.style.setProperty('--dark-color', color);
@@ -50,14 +60,35 @@
                     text = document.getElementById("text-to-preview").value;
                 }
 
-                document.getElementsByClassName("light-text").item(0).innerHTML = text;
-                document.getElementsByClassName("light-text").item(1).innerHTML = text;
+                for(i = 0; i != 4; i++) {
+                    document.getElementsByClassName("light-text").item(i).innerHTML = text;
+                    document.getElementsByClassName("primary-text").item(i).innerHTML = text;
+                    document.getElementsByClassName("secondary-text").item(i).innerHTML = text;
+                    document.getElementsByClassName("dark-text").item(i).innerHTML = text;
+                }
 
-                document.getElementsByClassName("main-text").item(0).innerHTML = text;
-                document.getElementsByClassName("main-text").item(1).innerHTML = text;
+            }
 
-                document.getElementsByClassName("dark-text").item(0).innerHTML = text;
-                document.getElementsByClassName("dark-text").item(1).innerHTML = text;
+            function setIconPreview() {
+
+                // Get the value of the input field with id="icon-input"
+                var icon = document.getElementById("icon-input").value;
+
+                // lowercase icon
+                icon = icon.toLowerCase();
+
+                // replace all spaces with underscores
+                icon = icon.replace(/ /g, "_");
+
+                // replace all commas with spaces
+                icon = icon.replace(/,/g, " ");
+
+                for(i = 0; i != 4; i++) {
+                    document.getElementsByClassName("light-icon").item(i).innerHTML = icon;
+                    document.getElementsByClassName("primary-icon").item(i).innerHTML = icon;
+                    document.getElementsByClassName("secondary-icon").item(i).innerHTML = icon;
+                    document.getElementsByClassName("dark-icon").item(i).innerHTML = icon;
+                }
 
             }
         
@@ -75,15 +106,22 @@
             <div id="color-selectors">
                 <div>
                     <div class="preview" id="light-preview"></div>
-                    <input onchange="changeColor('light')" type="text" id="light" name="light" value="#EFF0F3">
+                    <input onchange="changeColor('light')" type="text" id="light" name="light" value="#FFFFFE">
                     <label for="light"><span>Light color</span></label>
                 </div>
                 <br>
         
                 <div>
-                    <div class="preview" id="main-preview"></div>
-                    <input onchange="changeColor('main')" type="text" id="main" name="main" value="#FF8E3C">
-                    <label for="main"><span>Main color</span></label>
+                    <div class="preview" id="primary-preview"></div>
+                    <input onchange="changeColor('primary')" type="text" id="primary" name="primary" value="#FF8E3C">
+                    <label for="primary"><span>Primary color</span></label>
+                </div>
+                <br>
+
+                <div>
+                    <div class="preview" id="secondary-preview"></div>
+                    <input onchange="changeColor('secondary')" type="text" id="secondary" name="secondary" value="#FF8E3C">
+                    <label for="secondary"><span>Secondary color</span></label>
                 </div>
                 <br>
         
@@ -102,13 +140,17 @@
             <p>This section shows how the colors would look on each button design</p>
             <hr>
             <div id="button-previews">
-                <button class="tertiary-button">Tertiary</button>
-                <button class="secondary-button">Secondary</button>
-                <button class="main-button">Primary</button>
+                <button class="tertiary-button-primary">Tertiary</button>
+                <button class="secondary-button-primary">Secondary</button>
+                <button class="primary-button-primary">Primary</button>
+
+                <button class="tertiary-button-secondary">Tertiary</button>
+                <button class="secondary-button-secondary">Secondary</button>
+                <button class="primary-button-secondary">Primary</button>
 
                 <button class="tertiary-button-dark">Tertiary</button>
                 <button class="secondary-button-dark">Secondary</button>
-                <button class="main-button-dark">Primary</button>
+                <button class="primary-button-dark">Primary</button>
             </div>
         </fieldset>
 
@@ -122,24 +164,34 @@
             <textarea spellcheck="false" id="text-to-preview" placeholder="Write some text..." cols="104" rows="10" wrap="hard" maxlength="1040"></textarea>
             <br>
             <br>
-            <button class="main-button" onclick="setTextPreview()">Preview</button>
+            <button class="primary-button-primary" onclick="setTextPreview()">Preview</button>
             <hr>
             <div id="text-previews">
-                <div id="light-text-preview">
+                <div class="light-preview">
+                    <p class="primary-text">This is a preview of the colored text</p>
+                    <p class="secondary-text">This is a preview of the colored text</p>
                     <p class="dark-text">This is a preview of the colored text</p>
-                    <p class="main-text">This is a preview of the colored text</p>
                 </div>
                 <br>
         
-                <div id="main-text-preview">
-                    <p class="dark-text">This is a preview of the colored text</p>
+                <div class="primary-preview">
                     <p class="light-text">This is a preview of the colored text</p>
+                    <p class="secondary-text">This is a preview of the colored text</p>
+                    <p class="dark-text">This is a preview of the colored text</p>
+                </div>
+                <br>
+
+                <div class="secondary-preview">
+                    <p class="light-text">This is a preview of the colored text</p>
+                    <p class="primary-text">This is a preview of the colored text</p>
+                    <p class="dark-text">This is a preview of the colored text</p>
                 </div>
                 <br>
         
-                <div id="dark-text-preview">
-                    <p class="main-text">This is a preview of the colored text</p>
+                <div class="dark-preview">
                     <p class="light-text">This is a preview of the colored text</p>
+                    <p class="primary-text">This is a preview of the colored text</p>
+                    <p class="secondary-text">This is a preview of the colored text</p>
                 </div>
             </div>
         </fieldset>
@@ -147,9 +199,91 @@
         <br>
 
         <fieldset>
+            <legend style="font-weight: bold;">ICON PREVIEW</legend>
+            <p>This section shows how the colors would look on a sample icon on different colors</p>
+            <hr>
+            <p>Enter an icon name!</p>
+            <p>If you have multiple icons please speparate them with a comma!</p>
+            <p>You can use <a href="https://fonts.google.com/icons" target="_blank">Google Icons</a> to find icons to test!</p>
+            <input type="text" placeholder="Enter icon name ..." id="icon-input"></input>
+            <br>
+            <br>
+            <button class="primary-button-primary" onclick="setIconPreview()">Search</button>
+            <hr>
+            <div id="icon-previews">
+                <div class="light-preview">
+                    <span class="material-symbols-outlined primary-icon">
+                        settings
+                    </span>
+                    <span class="material-symbols-outlined secondary-icon">
+                        settings
+                    </span>
+                    <span class="material-symbols-outlined dark-icon">
+                        settings
+                    </span>
+                </div>
+                <br>
+
+                <div class="primary-preview">
+                    <span class="material-symbols-outlined light-icon">
+                        settings
+                    </span>
+                    <span class="material-symbols-outlined secondary-icon">
+                        settings
+                    </span>
+                    <span class="material-symbols-outlined dark-icon">
+                        settings
+                    </span>
+                </div>
+                <br>
+
+                <div class="secondary-preview">
+                    <span class="material-symbols-outlined light-icon">
+                        settings
+                    </span>
+                    <span class="material-symbols-outlined primary-icon">
+                        settings
+                    </span>
+                    <span class="material-symbols-outlined dark-icon">
+                        settings
+                    </span>
+                </div>
+                <br>
+
+                <div class="dark-preview">
+                    <span class="material-symbols-outlined light-icon">
+                        settings
+                    </span>
+                    <span class="material-symbols-outlined primary-icon">
+                        settings
+                    </span>
+                    <span class="material-symbols-outlined secondary-icon">
+                        settings
+                    </span>
+                </div>
+                <br>
+
+            </div>
+        </fieldset>
+
+        <br>
+
+        <fieldset>
             <legend style="font-weight: bold;">INFORMATION</legend>
-            <p>Version: 1.0.0</p>
+            <p>Version: 1.1.2</p>
             <p>Since: 28th of May 2022</p>
+        </fieldset>
+
+        <br>
+
+        <fieldset>
+            <legend style="font-weight: bold;">UPDATES AND FIXES</legend>
+            <p><span style="font-style: italic;">1.0.1</span>: Added secondary color to preview</p>
+            <p><span style="font-style: italic;">1.0.2</span>: Added button preview for secondary color</p>
+            <p><span style="font-style: italic;">1.0.3</span>: Added text preview for secondary color</p>
+            <p><span style="font-style: italic;">1.1.0</span>: Added icon preview for all colors</p>
+            <p><span style="font-style: italic;">1.1.1</span>: Added search function for icon preview</p>
+            <p><span style="font-style: italic;">1.1.2</span>: Added multi-search function for icon preview</p>
         </fieldset>
 
     </body>

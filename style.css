@@ -4,7 +4,8 @@
 
     /* Commonly used for non-text elements, though not limited */
 
-    --main-color: #FF8E3C;
+    --primary-color: #FF8E3C;
+    --secondary-color: #D9376E;
 
     /* -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
 
@@ -64,6 +65,36 @@ hr {
 
 /* -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
 
+.checkbox {
+    width: 16px;
+    height: 16px;
+}
+
+#icon-input {
+    width: 1132px;
+    padding-left: 10px;
+    font-family: 'Barlow', sans-serif;
+    color: var(--dark-color);
+}
+
+#icon-input:focus {
+    border-color: var(--primary-color);
+    border-block-color: var(--primary-color);
+    outline: none;
+}
+
+#icon-input::selection {
+    background-color: var(--secondary-color);
+    color: var(--light-color);
+}
+
+#icon-input::-moz-selection {
+    background-color: var(--secondary-color);
+    color: var(--light-color);
+}
+
+/* -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
+
 .preview {
     float: left;
     margin-right: 10px;
@@ -79,8 +110,12 @@ hr {
     background-color: var(--light-color);
 }
 
-#main-preview {
-    background-color: var(--main-color);
+#primary-preview {
+    background-color: var(--primary-color);
+}
+
+#secondary-preview {
+    background-color: var(--secondary-color);
 }
 
 #dark-preview {
@@ -89,84 +124,179 @@ hr {
 
 /* -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
 
+.material-symbols-outlined {
+
+    margin-top: 5px;
+    margin-right: 24px;
+
+  font-variation-settings:
+  'FILL' 1,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48
+}
+
+/* -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
+
+ a:link {
+    color: var(--primary-color);
+  }
+  
+  a:visited {
+    color: var(--secondary-color);
+  }
+  
+  a:hover {
+    filter: brightness(var(--hover));
+  }
+  
+  a:active {
+    filter: brightness(var(--active));
+  } 
+
+/* -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
+
 #text-to-preview {
-    min-width: 741px;
-    width: 741px;
-    max-width: 741px;
+    min-width: 1132px;
+    width: 1132px;
+    max-width: 1132px;
 
     min-height: 200px;
     max-height: 200px;
 
     resize: none;
+    padding: 10px;
+
+    font-family: 'Barlow', sans-serif;
+    color: var(--dark-color);
 
     border-radius: 0;
     border: solid black 1px;
 }
 
 #text-to-preview:focus {
-    border-color: var(--main-color);
-    border-block-color: var(--main-color);
+    border-color: var(--primary-color);
+    border-block-color: var(--primary-color);
     outline: none;
-  }
+}
 
-#light-text-preview {
+#text-to-preview::selection {
+    background-color: var(--secondary-color);
+    color: var(--light-color);
+}
+
+#text-to-preview::-moz-selection {
+    background-color: var(--secondary-color);
+    color: var(--light-color);
+}
+
+.light-preview {
     padding-top: 5px;
     padding-left: 25px;
     padding-right: 25px;
     padding-bottom: 5px;
 
-    min-width: 300px;
-    max-width: 696px;
+    width: 1088px;
 
     background-color: var(--light-color);
 }
 
-#main-text-preview {
+.primary-preview {
     padding-top: 5px;
     padding-left: 25px;
     padding-right: 25px;
     padding-bottom: 5px;
 
-    min-width: 300px;
-    max-width: 696px;
+    width: 1088px;
 
-    background-color: var(--main-color);
+    background-color: var(--primary-color);
 }
 
-#dark-text-preview {
+.secondary-preview {
     padding-top: 5px;
     padding-left: 25px;
     padding-right: 25px;
     padding-bottom: 5px;
 
-    min-width: 300px;
-    max-width: 696px;
+    width: 1088px;
+
+    background-color: var(--secondary-color);
+}
+
+.dark-preview {
+    padding-top: 5px;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-bottom: 5px;
+
+    width: 1088px;
 
     background-color: var(--dark-color);
 }
 
 /* -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
 
-.main-button {
-    background-color: var(--main-color);
-    border-color: var(--main-color);
+.light-icon {
     color: var(--light-color);
 }
 
-.secondary-button {
-    background-color: var(--light-color);
-    border-color: var(--main-color);
-    color: var(--main-color);
+.primary-icon {
+    color: var(--primary-color);
 }
 
-.tertiary-button {
+.secondary-icon {
+    color: var(--secondary-color);
+}
+
+.dark-icon {
+    color: var(--dark-color);
+}
+
+/* -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
+
+.primary-button-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: var(--light-color);
+}
+
+.secondary-button-primary {
+    background-color: var(--light-color);
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.tertiary-button-primary {
     background-color: var(--light-color);
     border-color: var(--light-color);
-    color: var(--main-color);
+    color: var(--primary-color);
     text-decoration: underline;
 }
 
-.main-button-dark {
+/* -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
+
+.primary-button-secondary {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+    color: var(--light-color);
+}
+
+.secondary-button-secondary {
+    background-color: var(--light-color);
+    border-color: var(--secondary-color);
+    color: var(--secondary-color);
+}
+
+.tertiary-button-secondary {
+    background-color: var(--light-color);
+    border-color: var(--light-color);
+    color: var(--secondary-color);
+    text-decoration: underline;
+}
+
+/* -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
+
+.primary-button-dark {
     background-color: var(--dark-color);
     border-color: var(--dark-color);
     color: var(--light-color);
@@ -191,8 +321,12 @@ hr {
     color: var(--light-color);
 }
 
-.main-text {
-    color: var(--main-color);
+.primary-text {
+    color: var(--primary-color);
+}
+
+.secondary-text {
+    color: var(--secondary-color);
 }
 
 .dark-text {
