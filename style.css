@@ -56,6 +56,11 @@ input {
     margin-right: 6px;
 }
 
+textarea:focus {
+    outline: none;
+    border-color: var(--main-color);
+}
+
 hr {
     border: dashed 1px;
     margin-top: 25px;
