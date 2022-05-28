@@ -80,8 +80,14 @@
                 // replace all spaces with underscores
                 icon = icon.replace(/ /g, "_");
 
-                // replace all commas with spaces
-                icon = icon.replace(/,/g, " ");
+                //split by ,
+                icon = icon.split(",");
+
+                // keep the first 11 elements of icon array
+                icon = icon.slice(0, 11);
+
+                // transform array to string
+                icon = icon.join(" ");
 
                 for(i = 0; i != 5; i++) {
                     document.getElementsByClassName("light-icon").item(i).innerHTML = icon;
