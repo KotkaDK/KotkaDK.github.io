@@ -36,8 +36,6 @@ button {
     width: 88px;
     height: 32px;
 
-    font-family: 'Barlow', sans-serif;
-
     border: solid 1px;
     margin-right: 40px;
 }
@@ -53,8 +51,6 @@ button:active {
 input {
     width: 88px;
     height: 32px;
-
-    font-family: 'Barlow', sans-serif;
 
     border: solid 1px;
     margin-right: 6px;
