@@ -71,7 +71,7 @@ hr {
 }
 
 #icon-input {
-    width: 1132px;
+    width: 1116px;
     padding-left: 10px;
     font-family: 'Barlow', sans-serif;
     color: var(--dark-color);
@@ -157,9 +157,9 @@ hr {
 /* -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
 
 #text-to-preview {
-    min-width: 1132px;
-    width: 1132px;
-    max-width: 1132px;
+    min-width: 1116px;
+    width: 1116px;
+    max-width: 1116px;
 
     min-height: 200px;
     max-height: 200px;
