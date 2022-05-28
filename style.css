@@ -41,6 +41,10 @@ button {
     margin-right: 40px;
 }
 
+.smallerMargin {
+    margin-right: 5px;
+}
+
 button:hover {
     filter: brightness(var(--hover));
 }

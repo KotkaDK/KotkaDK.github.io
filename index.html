@@ -9,7 +9,7 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Barlow&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-        <title>COLOR PALETTE TESTER | 1.1.3</title>
+        <title>COLOR PALETTE TESTER | 1.1.4</title>
         <script>
 
             function setDefaultText() {
@@ -74,20 +74,27 @@
                 // Get the value of the input field with id="icon-input"
                 var icon = document.getElementById("icon-input").value;
 
+                console.log(icon);
+
                 // lowercase icon
                 icon = icon.toLowerCase();
 
-                // replace all spaces with underscores
-                icon = icon.replace(/ /g, "_");
+                // remove all non-alphanumeric characters except for comma and underscore
+                icon = icon.replace(/[^a-z0-9 _]/g, "");
 
-                //split by ,
-                icon = icon.split(",");
+                // remove duplicate underscores and spoaces
+                icon = icon.replace(/ {2,}/g, "_");
+                icon = icon.replace(/ {2,}/g, " ");
 
-                // keep the first 11 elements of icon array
-                icon = icon.slice(0, 11);
+                //split by space and keep the first 11 elements
+                icon = icon.split(" ").slice(0, 11);
+
+                console.log(icon);
 
                 // transform array to string
                 icon = icon.join(" ");
+
+                console.log(icon);
 
                 for(i = 0; i != 5; i++) {
                     document.getElementsByClassName("light-icon").item(i).innerHTML = icon;
@@ -95,6 +102,12 @@
                     document.getElementsByClassName("secondary-icon").item(i).innerHTML = icon;
                     document.getElementsByClassName("dark-icon").item(i).innerHTML = icon;
                 }
+
+            }
+
+            function clearText(id) {
+
+                document.getElementById(id).value = "";
 
             }
         
@@ -170,7 +183,8 @@
             <textarea spellcheck="false" id="text-to-preview" placeholder="Write some text..." cols="104" rows="10" wrap="hard" maxlength="1040"></textarea>
             <br>
             <br>
-            <button class="primary-button-primary" onclick="setTextPreview()">Preview</button>
+            <button class="primary-button-primary smallerMargin" onclick="setTextPreview()">Preview</button>
+            <button class="secondary-button-primary smallerMargin" onclick="clearText('text-to-preview')">clear</button>
             <hr>
             <div id="text-previews">
                 <div class="light-preview">
@@ -214,7 +228,8 @@
             <input type="text" placeholder="Enter icon name ..." id="icon-input"></input>
             <br>
             <br>
-            <button class="primary-button-primary" onclick="setIconPreview()">Search</button>
+            <button class="primary-button-primary smallerMargin" onclick="setIconPreview()">Search</button>
+            <button class="secondary-button-primary smallerMargin" onclick="clearText('icon-input')">clear</button>
             <hr>
             <div id="icon-previews">
                 <div class="light-preview">
@@ -276,7 +291,7 @@
 
         <fieldset>
             <legend style="font-weight: bold;">INFORMATION</legend>
-            <p>Version: 1.1.3</p>
+            <p>Version: 1.1.4</p>
             <p>Since: 28th of May 2022</p>
         </fieldset>
 
@@ -291,6 +306,7 @@
             <p><span style="font-style: italic;">1.1.1</span>: Added search function for icon preview</p>
             <p><span style="font-style: italic;">1.1.2</span>: Added multi-search function for icon preview</p>
             <p><span style="font-style: italic;">1.1.3</span>: Fixed icon search bug</p>
+            <p><span style="font-style: italic;">1.1.4</span>: Added clear button</p>
         </fieldset>
 
     </body>
