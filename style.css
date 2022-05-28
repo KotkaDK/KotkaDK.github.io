@@ -105,8 +105,9 @@ hr {
 
 #text-to-preview:focus {
     border-color: var(--main-color);
+    border-block-color: var(--main-color);
     outline: none;
-}
+  }
 
 #light-text-preview {
     padding-top: 5px;
